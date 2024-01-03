@@ -1,102 +1,31 @@
-# :book: Interview Questions.
-## Topics Covered.
-1. Python List, List Comprehession.
+# Holberton School Interview
+![Holberton logo](https://www.alxafrica.com/wp-content/uploads/2022/01/header-logo.png)
+> Interview - Preparation
 
-## :wrench: Project setup
-```bash
-# Create project directory.
-mkdir ./alx-interview
-cd ./alx-interview
+## Description:bulb:
+Interview Algorithm practice
 
-# Create new repo.
-git init
+* Whiteboard
+* Data Structures
+* Time complexity (Big O notation)
+* Searching algorithms
 
-# Install python linter.
-pip install pycodestyle==2.8.0
-pip install pep8==1.7.0
-```
+## Technologies & Tools:computer:
 
-# :computer: Projects.
-## [0x00. Pascal's Triangle](0x00-pascal_triangle)
-Pascal triangle interview question.
+![Git](https://img.shields.io/badge/≡-Git-F05032?logo=git&style=flat-square&labelColor=282828)
+![Ubuntu](https://img.shields.io/badge/≡-Ubuntu-E95420?&style=flat-square&logo=Ubuntu&labelColor=282828)
+![GNU_Bash](https://img.shields.io/badge/≡-GNU_Bash-4EAA25?logo=GNU-Bash&style=flat-square&labelColor=282828)
+![Vim](https://img.shields.io/badge/≡-Vim-019733?logo=Vim&style=flat-square&logoColor=019733&labelColor=282828)
+![Pop!_OS](https://img.shields.io/badge/≡-Pop!_OS-48B9C7?logo=Pop_OS&style=flat-square&labelColor=282828)
+![VS_Code](https://img.shields.io/badge/≡-VS_Code-007ACC?logo=visual-studio-code&style=flat-square&logoColor=007ACC&labelColor=282828)
+![Python](https://img.shields.io/badge/≡-Python-3776AB?logo=Python&style=flat-square&labelColor=282828)
+![C](https://img.shields.io/badge/≡-Language-A8B9CC?logo=C&style=flat-square&labelColor=282828)
+![GitHub](https://img.shields.io/badge/≡-GitHub-181717?logo=GitHub&style=flat-square&labelColor=282828)
 
-### :wrench: Project setup.
-```bash
-# Create project directory.
-mkdir ./0x00-pascal_triangle
-touch ./0x00-pascal_triangle/README.md
-cd ./0x00-pascal_triangle
-```
+---
 
-### :heavy_check_mark: Solution.
-> [:point_right: Go to solution](0x00-pascal_triangle)
-
-## [0x01 lockboxes](0x01-lockboxes)
-Lockboxes interview question.
-
-### :wrench: Project setup.
-```bash
-# Create project directory.
-mkdir ./0x01-lockboxes
-touch ./0x01-lockboxes/README.md
-cd ./0x01-lockboxes
-```
-
-### :heavy_check_mark: Solution.
-> [:point_right: Go to solution](0x01-lockboxes)
-
-
-## [0x03. Log Parsing](0x03-log_parsing)
-Log Parsing interview question.
-
-### :wrench: Project setup.
-```bash
-# Create project directory.
-mkdir ./0x03-log_parsing
-touch ./0x03-log_parsing/README.md
-cd ./0x03-log_parsing
-```
-
-### :heavy_check_mark: Solution.
-> [:point_right: Go to solution](0x03-log_parsing)
-
-<!---->
-## [0. Island Perimeter](0x09-island_perimeter)
-Island Perimeter interview question.
-
-### :wrench: Project setup.
-```bash
-# Create project directory.
-mkdir ./0x09-island_perimeter
-touch ./0x09-island_perimeter/README.md
-cd ./0x09-island_perimeter
-```
-
-### :heavy_check_mark: Solution.
-> [:point_right: Go to solution](0x09-island_perimeter)
-<!---->
-
-<!---->
-## [0. Prime Game](00x0A-primegame)
-Prime game interview question.
-
-### :wrench: Project setup.
-```bash
-# Create project directory.
-mkdir ./0x0A-primegame
-touch ./0x0A-primegame/README.md
-cd ./0x09-island_perimeter
-```
-
-### :heavy_check_mark: Solution.
-> [:point_right: Go to solution](0x0A-primegame)
-<!---->
-
-# :man: Author and Credits.
-This project was done by [SE. Noran Abdelfattah](https://github.com/Noransaber). Feel free to get intouch with me;
-
-:iphone: WhatsApp [+254115227963](https://wa.me/254115227963)
-
-:email: Email [moses.soft.eng@gmail.com](mailto:moses.soft.eng@gmail.com)
-
-:thumbsup: A lot of thanks to [ALX-Africa Software Engineering](https://www.alxafrica.com/) program for the project requirements.
+## Author
+* **Noran Abdelfattah** - [<img src="https://img.shields.io/badge/Medium-black"/>](https://medium.com/@noransaber685)
+  [<img src="https://img.shields.io/badge/Twitter-1DA1F2.svg?&style=plastic&logo=twitter&logoColor=white"/>](https://twitter.com/Noransaber11)
+  [<img src="https://img.shields.io/badge/Linkedin-0A66C2.svg?&style=plastic&logo=linkedin&logoColor=white"/>](https://www.linkedin.com/in/noran-saber-abdelfattah-6198471ba/)
+  [<img src="https://img.shields.io/badge/GitHub-181717.svg?&style=plastic&logo=github&logoColor=white"/>](https://github.com/Noransaber)
