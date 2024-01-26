@@ -1,50 +1,42 @@
 #!/usr/bin/python3
 """
-log parsing
+This module contains the function that displays the
+stats from the standard input
 """
-
-import sys
 import re
+import sys
+status_codes = {200: 0, 301: 0, 400: 0, 401: 0,
+                403: 0, 404: 0, 405: 0, 500: 0}
+print_counter = 0
+size_summation = 0
 
 
-def output(log: dict) -> None:
+def print_logs():
     """
-    helper function to display stats
+    Prints status codes to the logs
     """
-    print("File size: {}".format(log["file_size"]))
-    for code in sorted(log["code_frequency"]):
-        if log["code_frequency"][code]:
-            print("{}: {}".format(code, log["code_frequency"][code]))
+    print("File size: {}".format(size_summation))
+    for k, v in sorted(status_codes.items()):
+        if v != 0:
+            print("{}: {}".format(k, v))
 
 
 if __name__ == "__main__":
-    regex = re.compile(
-    r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)')  # nopep8
-
-    line_count = 0
-    log = {}
-    log["file_size"] = 0
-    log["code_frequency"] = {
-        str(code): 0 for code in [
-            200, 301, 400, 401, 403, 404, 405, 500]}
-
     try:
         for line in sys.stdin:
-            line = line.strip()
-            match = regex.fullmatch(line)
-            if (match):
-                line_count += 1
-                code = match.group(1)
-                file_size = int(match.group(2))
-
-                # File size
-                log["file_size"] += file_size
-
-                # status code
-                if (code.isdecimal()):
-                    log["code_frequency"][code] += 1
-
-                if (line_count % 10 == 0):
-                    output(log)
-    finally:
-        output(log)
+            std_line = line.replace("\n", "")
+            log_list = re.split('- | "|" | " " ', str(std_line))
+            try:
+                codes = log_list[-1].split(" ")
+                if int(codes[0]) not in status_codes.keys():
+                    continue
+                status_codes[int(codes[0])] += 1
+                print_counter += 1
+                size_summation += int(codes[1])
+                if print_counter % 10 == 0:
+                    print_logs()
+            except():
+                pass
+        print_logs()
+    except KeyboardInterrupt:
+        print_logs()
