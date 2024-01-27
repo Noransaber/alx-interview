@@ -1,72 +1,74 @@
 #!/usr/bin/python3
 """
-This module contains the function that displays the
-stats from the standard input
+Log stats module
 """
 import sys
-import re
+from operator import itemgetter
 
-def initialize_log():
-  """
-  This function initializes a log dictionary with keys for file size
-  and a dictionary of HTTP status codes. The initial values are set
-  to 0, and the function 
-  """
-    status_codes = [200, 301, 400, 401, 403, 404, 405, 500]
-    log = {"file_size": 0, "code_list": {str(code): 0 for code in status_codes}}
-    print(f"{log = }")
-    return log
 
-def parse_line(line, regex, log):
-  """
-  This function takes a log line, a regular expression (regex), and the
-  current log dictionary as input. It attempts to match the log line using the regular
-  expression and updates the log with relevant information such as file size and HTTP status
-  codes.
-  """
-    match = regex.fullmatch(line)
+def log_parser(log):
+    """
+    Parses log into different fields
+    """
+    log_fields = log.split()
+    file_size = int(log_fields[-1])
+    status_code = log_fields[-2]
+    return status_code, file_size
 
-    if match:
-        stat_code, file_size = match.group(1, 2)
-        log["file_size"] += int(file_size)
-        if stat_code.isdecimal():
-            log["code_list"][stat_code] += 1
-    return log
 
-def print_codes(log):
-  """
-  This function takes the log dictionary as input and prints the file size and
-  counts of each HTTP status code that occurred in the log. It sorts the status
-  codes before printing for better readability.
-  """
-    print("File size: {}".format(log["file_size"]))
+def validate_format(log):
+    """
+    Validates log format
+    """
+    return False if len(log.split()) < 7 else True
 
-    sorted_code_list = sorted(log["code_list"])
-    for code in sorted_code_list:
-        if log["code_list"][code]:
-            print(f"{code}: {log['code_list'][code]}")
+
+def validate_status_code(status_code):
+    """
+    Check if status code entry is valid
+    """
+    valid_status_codes = ["200", "301", "400", "401",
+                          "403", "404", "405", "500"]
+    return True if status_code in valid_status_codes else False
+
+
+def print_log(file_size, status_codes) -> None:
+    """
+    Prints out log files
+    """
+    sorted_status_codes = sorted(status_codes.items(), key=itemgetter(0))
+    print('File size: {}'.format(file_size))
+    for code_count in sorted_status_codes:
+        key = code_count[0]
+        value = code_count[1]
+        print("{}: {}".format(key, value))
+
 
 def main():
-  """
-  The main function of the script. It initializes a regular expression
-  for parsing log lines, initializes the log, and then reads log lines from
-  standard input. It calls the parse_line function to update the log for
-  every log line and prints log statistics every 10 lines.
-  """
-    regex = re.compile(r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+\] "GET /projects/260 HTTP/1.1" (.{3}) (\d+)')
+    """
+    Reads logs from std in and prints out statistic
+    on status code and file size
+    """
+    status_codes_count = {}
+    total_size = 0
+    log_count = 0
+    try:
+        for log in sys.stdin:
+            log_count += 1
+            if not validate_format(log):
+                continue
+            status_code, file_size = log_parser(log)
+            total_size += file_size
+            if validate_status_code(status_code):
+                entry = {status_code:
+                         status_codes_count.get(status_code, 0) + 1}
+                status_codes_count.update(entry)
+            if not log_count % 10:
+                print_log(total_size, status_codes_count)
+    except KeyboardInterrupt:
+        print_log(total_size, status_codes_count)
+    print_log(total_size, status_codes_count)
 
-    log = initialize_log()
-    line_count = 0
 
-    for line in sys.stdin:
-        line = line.strip()
-        line_count += 1
-        log = parse_line(line, regex, log)
-
-        if line_count % 10 == 0:
-            print_codes(log)
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
-    initialize_log()
-
