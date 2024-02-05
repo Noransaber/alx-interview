@@ -31,7 +31,3 @@
     julien@ubuntu:~/0x08. N Queens$
     ```
 ---
-
-## Collaborate
-
-To collaborate, reach me through my email address wendymunyasi@gmail.com.To be updated later
