@@ -25,8 +25,6 @@ request(
     }
   }
 );
-// Import the 'request' librar
-const request = require('request');
 // Define constant with the base URL of the Star Wars API
 const API_URL = 'https://swapi-api.alx-tools.com/api';
 
