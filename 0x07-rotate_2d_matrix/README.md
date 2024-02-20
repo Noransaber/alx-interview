@@ -1,13 +1,6 @@
 # Project Name
 **0x07. Rotate 2D Matrix**
 
-## Author's Details
-Name: *Wendy Munyasi.*
-
-Email: *wendymunyasi@gmail.com*
-
-Tel: *+254707240068.*
-
 ##  Requirements
 
 ### Python Scripts
